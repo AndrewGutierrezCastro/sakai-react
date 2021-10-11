@@ -39,6 +39,7 @@ import 'prismjs/themes/prism-coy.css';
 import './layout/flags/flags.css';
 import './layout/layout.scss';
 import './App.scss';
+import { TableContacts } from './components/TableContacts';
 
 const App = () => {
 
@@ -148,90 +149,92 @@ const App = () => {
     const menu = [
         {
             label: 'Home',
-            items: [{
-                label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/'
-            }]
-        },
-        {
-            label: 'UI Kit', icon: 'pi pi-fw pi-sitemap',
             items: [
-                {label: 'Form Layout', icon: 'pi pi-fw pi-id-card', to: '/formlayout'},
-                {label: 'Input', icon: 'pi pi-fw pi-check-square', to: '/input'},
-                {label: "Float Label", icon: "pi pi-fw pi-bookmark", to: "/floatlabel"},
-                {label: "Invalid State", icon: "pi pi-fw pi-exclamation-circle", to: "invalidstate"},
-                {label: 'Button', icon: 'pi pi-fw pi-mobile', to: '/button'},
-                {label: 'Table', icon: 'pi pi-fw pi-table', to: '/table'},
-                {label: 'List', icon: 'pi pi-fw pi-list', to: '/list'},
-                {label: 'Tree', icon: 'pi pi-fw pi-share-alt', to: '/tree'},
-                {label: 'Panel', icon: 'pi pi-fw pi-tablet', to: '/panel'},
-                {label: 'Overlay', icon: 'pi pi-fw pi-clone', to: '/overlay'},
-                {label: 'Menu', icon: 'pi pi-fw pi-bars', to: '/menu'},
-                {label: 'Message', icon: 'pi pi-fw pi-comment', to: '/messages'},
-                {label: 'File', icon: 'pi pi-fw pi-file', to: '/file'},
-                {label: 'Chart', icon: 'pi pi-fw pi-chart-bar', to: '/chart'},
-                {label: 'Misc', icon: 'pi pi-fw pi-circle-off', to: '/misc'},
-            ]
-        },
-        {
-            label: 'Pages', icon: 'pi pi-fw pi-clone',
-            items: [
-                {label: 'Crud', icon: 'pi pi-fw pi-user-edit', to: '/crud'},
-                {label: 'Timeline', icon: 'pi pi-fw pi-calendar', to: '/timeline'},
-                {label: 'Empty', icon: 'pi pi-fw pi-circle-off', to: '/empty'}
-            ]
-        },
-        {
-            label: 'Menu Hierarchy', icon: 'pi pi-fw pi-search',
-            items: [
-                {
-                    label: 'Submenu 1', icon: 'pi pi-fw pi-bookmark',
-                    items: [
-                        {
-                            label: 'Submenu 1.1', icon: 'pi pi-fw pi-bookmark',
-                            items: [
-                                {label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-bookmark'},
-                                {label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-bookmark'},
-                                {label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-bookmark'},
-                            ]
-                        },
-                        {
-                            label: 'Submenu 1.2', icon: 'pi pi-fw pi-bookmark',
-                            items: [
-                                {label: 'Submenu 1.2.1', icon: 'pi pi-fw pi-bookmark'},
-                                {label: 'Submenu 1.2.2', icon: 'pi pi-fw pi-bookmark'}
-                            ]
-                        },
-                    ]
-                },
-                {
-                    label: 'Submenu 2', icon: 'pi pi-fw pi-bookmark',
-                    items: [
-                        {
-                            label: 'Submenu 2.1', icon: 'pi pi-fw pi-bookmark',
-                            items: [
-                                {label: 'Submenu 2.1.1', icon: 'pi pi-fw pi-bookmark'},
-                                {label: 'Submenu 2.1.2', icon: 'pi pi-fw pi-bookmark'},
-                                {label: 'Submenu 2.1.3', icon: 'pi pi-fw pi-bookmark'},
-                            ]
-                        },
-                        {
-                            label: 'Submenu 2.2', icon: 'pi pi-fw pi-bookmark',
-                            items: [
-                                {label: 'Submenu 2.2.1', icon: 'pi pi-fw pi-bookmark'},
-                                {label: 'Submenu 2.2.2', icon: 'pi pi-fw pi-bookmark'}
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            label: 'Get Started',
-            items: [
-                {label: 'Documentation', icon: 'pi pi-fw pi-question', command: () => {window.location = "#/documentation"}},
-                {label: 'View Source', icon: 'pi pi-fw pi-search', command: () => {window.location = "https://github.com/primefaces/sakai-react"}}
+                {label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/'},
+                {label: 'Contacts', icon: 'pi pi-fw pi-table', to: '/table-contacts'}
             ]
         }
+        // ,
+        // {
+        //     label: 'UI Kit', icon: 'pi pi-fw pi-sitemap',
+        //     items: [
+        //         {label: 'Form Layout', icon: 'pi pi-fw pi-id-card', to: '/formlayout'},
+        //         {label: 'Input', icon: 'pi pi-fw pi-check-square', to: '/input'},
+        //         {label: "Float Label", icon: "pi pi-fw pi-bookmark", to: "/floatlabel"},
+        //         {label: "Invalid State", icon: "pi pi-fw pi-exclamation-circle", to: "invalidstate"},
+        //         {label: 'Button', icon: 'pi pi-fw pi-mobile', to: '/button'},
+        //         {label: 'Table', icon: 'pi pi-fw pi-table', to: '/table'},
+        //         {label: 'List', icon: 'pi pi-fw pi-list', to: '/list'},
+        //         {label: 'Tree', icon: 'pi pi-fw pi-share-alt', to: '/tree'},
+        //         {label: 'Panel', icon: 'pi pi-fw pi-tablet', to: '/panel'},
+        //         {label: 'Overlay', icon: 'pi pi-fw pi-clone', to: '/overlay'},
+        //         {label: 'Menu', icon: 'pi pi-fw pi-bars', to: '/menu'},
+        //         {label: 'Message', icon: 'pi pi-fw pi-comment', to: '/messages'},
+        //         {label: 'File', icon: 'pi pi-fw pi-file', to: '/file'},
+        //         {label: 'Chart', icon: 'pi pi-fw pi-chart-bar', to: '/chart'},
+        //         {label: 'Misc', icon: 'pi pi-fw pi-circle-off', to: '/misc'},
+        //     ]
+        // },
+        // {
+        //     label: 'Pages', icon: 'pi pi-fw pi-clone',
+        //     items: [
+        //         {label: 'Crud', icon: 'pi pi-fw pi-user-edit', to: '/crud'},
+        //         {label: 'Timeline', icon: 'pi pi-fw pi-calendar', to: '/timeline'},
+        //         {label: 'Empty', icon: 'pi pi-fw pi-circle-off', to: '/empty'}
+        //     ]
+        // },
+        // {
+        //     label: 'Menu Hierarchy', icon: 'pi pi-fw pi-search',
+        //     items: [
+        //         {
+        //             label: 'Submenu 1', icon: 'pi pi-fw pi-bookmark',
+        //             items: [
+        //                 {
+        //                     label: 'Submenu 1.1', icon: 'pi pi-fw pi-bookmark',
+        //                     items: [
+        //                         {label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-bookmark'},
+        //                         {label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-bookmark'},
+        //                         {label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-bookmark'},
+        //                     ]
+        //                 },
+        //                 {
+        //                     label: 'Submenu 1.2', icon: 'pi pi-fw pi-bookmark',
+        //                     items: [
+        //                         {label: 'Submenu 1.2.1', icon: 'pi pi-fw pi-bookmark'},
+        //                         {label: 'Submenu 1.2.2', icon: 'pi pi-fw pi-bookmark'}
+        //                     ]
+        //                 },
+        //             ]
+        //         },
+        //         {
+        //             label: 'Submenu 2', icon: 'pi pi-fw pi-bookmark',
+        //             items: [
+        //                 {
+        //                     label: 'Submenu 2.1', icon: 'pi pi-fw pi-bookmark',
+        //                     items: [
+        //                         {label: 'Submenu 2.1.1', icon: 'pi pi-fw pi-bookmark'},
+        //                         {label: 'Submenu 2.1.2', icon: 'pi pi-fw pi-bookmark'},
+        //                         {label: 'Submenu 2.1.3', icon: 'pi pi-fw pi-bookmark'},
+        //                     ]
+        //                 },
+        //                 {
+        //                     label: 'Submenu 2.2', icon: 'pi pi-fw pi-bookmark',
+        //                     items: [
+        //                         {label: 'Submenu 2.2.1', icon: 'pi pi-fw pi-bookmark'},
+        //                         {label: 'Submenu 2.2.2', icon: 'pi pi-fw pi-bookmark'}
+        //                     ]
+        //                 }
+        //             ]
+        //         }
+        //     ]
+        // },
+        // {
+        //     label: 'Get Started',
+        //     items: [
+        //         {label: 'Documentation', icon: 'pi pi-fw pi-question', command: () => {window.location = "#/documentation"}},
+        //         {label: 'View Source', icon: 'pi pi-fw pi-search', command: () => {window.location = "https://github.com/primefaces/sakai-react"}}
+        //     ]
+        // }
     ];
 
     const addClass = (element, className) => {
@@ -277,6 +280,7 @@ const App = () => {
                     <Route path="/invalidstate" component={InvalidStateDemo}/>
                     <Route path="/button" component={ButtonDemo}/>
                     <Route path="/table" component={TableDemo}/>
+                    <Route path="/table-contacts" component={TableContacts}/>
                     <Route path="/list" component={ListDemo}/>
                     <Route path="/tree" component={TreeDemo}/>
                     <Route path="/panel" component={PanelDemo}/>
