@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Rating } from 'primereact/rating';
@@ -8,6 +9,8 @@ import { InputText } from 'primereact/inputtext';
 import { ProgressBar } from 'primereact/progressbar';
 import { ProductService } from '../service/ProductService';
 import { CustomerService } from '../service/CustomerService';
+import { ChatComponent } from './Chat';
+import { Route } from 'react-router-dom';
 
 export const TableContacts = () => {
 
@@ -138,7 +141,11 @@ export const TableContacts = () => {
         )
     };
 
-    const actionTemplate = () => <Button type="button" icon="pi pi-cog" className="p-button-secondary"></Button>;
+    const actionTemplate = ()=> <Link to="/chat"> 
+                                <Button type="button" icon="pi pi-fw pi-comment" className="p-button-secondary">
+                                 
+                                </Button>
+                                </Link>
 
     const productsTableHeader = (
         <div className="table-header-container">
@@ -223,12 +230,15 @@ export const TableContacts = () => {
                 <div className="card">
                     <h5>Default</h5>
                     <p>Pagination, sorting, filtering and checkbox selection.</p>
+                    
                     <DataTable value={customer1} paginator className="p-datatable-customers" rows={10} dataKey="id" rowHover selection={selectedCustomers} onSelectionChange={(e) => setSelectedCustomers(e.value)}
                         globalFilter={globalFilter1} emptyMessage="No customers found." loading={loading1} header={customer1TableHeader}>
                         
                         <Column field="name" header="Name" sortable body={bodyTemplate}></Column>
                        
-                        <Column headerStyle={{ width: '8rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center', overflow: 'visible', justifyContent: 'center' }} body={actionTemplate}></Column>
+                        <Column headerStyle={{ width: '8rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center', overflow: 'visible', justifyContent: 'center' }} body={actionTemplate}>
+                        
+                        </Column>
                     </DataTable>
                 </div>
             </div>

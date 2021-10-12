@@ -40,6 +40,7 @@ import './layout/flags/flags.css';
 import './layout/layout.scss';
 import './App.scss';
 import { TableContacts } from './components/TableContacts';
+import { ChatComponent } from './components/Chat';
 
 const App = () => {
 
@@ -294,6 +295,7 @@ const App = () => {
                     <Route path="/crud" component={Crud}/>
                     <Route path="/empty" component={EmptyPage}/>
                     <Route path="/documentation" component={Documentation}/>
+                    <Route path="/chat" component={ChatComponent}/>
                 </div>
 
                 <AppFooter layoutColorMode={layoutColorMode}/>
