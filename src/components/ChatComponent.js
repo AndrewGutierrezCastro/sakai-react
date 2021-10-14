@@ -1,21 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const ChatComponent = () => {
-    const [chat, setChat] = React.useState(
-        [
-        {
-            author: 'Alfonso',
-            message: 'Hola mundo Hola mundo Hola mundo Hola mundoHola mundo Hola mundoHola mundo Hola mundoHola mundoHola mundo'
-        },
-        {
-            author: 'Andrew',
-            message: 'Hola universo'
-        }
-        ]
-    );
+    const [chat, setChat] = React.useState([]);
     const [messageState, setMessage] = React.useState({
         message: '',
     });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            fetch('/api/getJSON', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    "id": 'AndrewAlfonso',
+                })
+                })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data) {
+                        setChat(data.result.chat);
+                    }
+                });
+        }, 2000);
+        return () => clearInterval(interval);
+    }, []);
 
     const handleInputOnChange = (event) => {
         setMessage({
